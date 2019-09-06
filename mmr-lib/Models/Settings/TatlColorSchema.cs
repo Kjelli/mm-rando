@@ -2,6 +2,7 @@
 
 namespace MMRando.Models
 {
+    [Description("Tatl Color")]
     public enum TatlColorSchema
     {
         Default,

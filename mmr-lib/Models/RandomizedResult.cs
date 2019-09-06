@@ -1,5 +1,5 @@
-﻿using MMRando.Models.Rom;
-using MMRando.GameObjects;
+﻿using MMRando.GameObjects;
+using MMRando.Models.Rom;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ namespace MMRando.Models
 {
     public class RandomizedResult
     {
-        public Settings Settings { get; private set; }
+        public ISettings Settings { get; private set; }
         public Random Random { get; private set; }
         public List<ItemObject> ItemList { get; set; }
         public List<MessageEntry> GossipQuotes { get; set; }
@@ -26,7 +26,7 @@ namespace MMRando.Models
         public int[] NewDCMasks = new int[] { -1, -1, -1, -1 };
         public int[] NewDestinationIndices = new int[] { -1, -1, -1, -1 };
 
-        public RandomizedResult(Settings settings, Random random)
+        public RandomizedResult(ISettings settings, Random random)
         {
             Settings = settings;
             Random = random;

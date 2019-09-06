@@ -1,5 +1,8 @@
-﻿namespace MMRando.Models
+﻿using System.ComponentModel;
+
+namespace MMRando.Models
 {
+    [Description("Gossip Hints")]
     public enum GossipHintStyle
     {
         Default,

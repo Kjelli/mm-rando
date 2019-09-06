@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MMRando.Extensions
 {
     public static class AttributeExtensions
     {
+        public static TAttribute GetAttribute<TAttribute>(this Type type) where TAttribute : Attribute
+        {
+            return type.GetCustomAttributes(false)
+                .OfType<TAttribute>()
+                .SingleOrDefault();
+        }
+
         public static TAttribute GetAttribute<TAttribute>(this Enum value) where TAttribute : Attribute
         {
             var type = value.GetType();

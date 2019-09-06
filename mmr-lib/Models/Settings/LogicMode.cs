@@ -2,6 +2,7 @@
 
 namespace MMRando.Models
 {
+    [Description("Logic Mode")]
     public enum LogicMode
     {
         [Description("Casual Logic")]

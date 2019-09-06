@@ -2,6 +2,7 @@
 
 namespace MMRando.Models
 {
+    [Description("Clock Speed")]
     public enum ClockSpeed
     {
         Default,

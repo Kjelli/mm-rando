@@ -1,5 +1,8 @@
-﻿namespace MMRando.Models
+﻿using System.ComponentModel;
+
+namespace MMRando.Models
 {
+    [Description("Damage Effect")]
     public enum DamageEffect
     {
         Default,

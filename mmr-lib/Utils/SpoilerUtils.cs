@@ -1,12 +1,11 @@
 ﻿using MMRando.Extensions;
 using MMRando.GameObjects;
 using MMRando.Models;
-using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Reflection;
 
 namespace MMRando.Utils
 {
@@ -17,7 +16,7 @@ namespace MMRando.Utils
             var itemList = randomized.ItemList
                 .Where(io => !io.Item.IsFake())
                 .Select(u => new SpoilerItem(u));
-            var settingsString = settings.ToString();
+            var settingsString = SettingsUtils.Stringify(settings);
 
             var directory = Path.GetDirectoryName(settings.OutputROMFilename);
             var filename = $"{Path.GetFileNameWithoutExtension(settings.OutputROMFilename)}";
@@ -33,27 +32,27 @@ namespace MMRando.Utils
                 NewDestinationIndices = randomized.NewDestinationIndices,
                 Logic = randomized.Logic,
                 CustomItemListString = settings.UseCustomItemList ? settings.CustomItemListString : null,
-                GossipHints = randomized.GossipQuotes?.ToDictionary(me => (GossipQuote) me.Id, (me) =>
-                {
-                    var message = me.Message.Substring(1);
-                    var soundEffect = message.Substring(0, 2);
-                    message = message.Substring(2);
-                    if (soundEffect == "\x69\x0C")
-                    {
+                GossipHints = randomized.GossipQuotes?.ToDictionary(me => (GossipQuote)me.Id, (me) =>
+               {
+                   var message = me.Message.Substring(1);
+                   var soundEffect = message.Substring(0, 2);
+                   message = message.Substring(2);
+                   if (soundEffect == "\x69\x0C")
+                   {
                         // real
                     }
-                    else if (soundEffect == "\x69\x0A")
-                    {
+                   else if (soundEffect == "\x69\x0A")
+                   {
                         // fake
                         message = "FAKE - " + message;
-                    }
-                    else
-                    {
+                   }
+                   else
+                   {
                         // junk
                         message = "JUNK - " + message;
-                    }
-                    return plainTextRegex.Replace(message.Replace("\x11", " "), "");
-                }),
+                   }
+                   return plainTextRegex.Replace(message.Replace("\x11", " "), "");
+               }),
             };
 
             if (settings.OutputHTMLSpoiler)

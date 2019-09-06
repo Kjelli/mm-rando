@@ -2,9 +2,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Compile Update="**\*.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -14,8 +14,27 @@
     <AvaloniaResource Include="Assets\*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.8.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.8.0" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.0" />
+    <PackageReference Include="Avalonia" Version="0.8.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.8.2" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MMR Lib">
+      <HintPath>..\mmr-lib\bin\Debug\netstandard2.0\MMR Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Partials\ColorPickerSettingsView.xaml.cs">
+      <DependentUpon>ColorPickerSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Partials\ComboSettingsView.xaml.cs">
+      <DependentUpon>ComboSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Partials\FileSelectSettingsView.xaml.cs">
+      <DependentUpon>FileSelectSettingsView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

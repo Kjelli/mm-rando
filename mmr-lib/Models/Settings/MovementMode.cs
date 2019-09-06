@@ -2,6 +2,7 @@
 
 namespace MMRando.Models
 {
+    [Description("Movement Mode")]
     public enum MovementMode
     {
         Default,

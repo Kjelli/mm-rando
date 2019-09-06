@@ -1,5 +1,6 @@
 using MMRando.Constants;
 using MMRando.Extensions;
+using MMRando.GameObjects;
 using MMRando.LogicMigrator;
 using MMRando.Models;
 using MMRando.Models.Rom;
@@ -11,8 +12,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using MMRando.GameObjects;
 
 namespace MMRando
 {
@@ -90,10 +89,10 @@ namespace MMRando
 
         #endregion
 
-        private Settings _settings;
+        private ISettings _settings;
         private RandomizedResult _randomized;
 
-        public Randomizer(Settings settings)
+        public Randomizer(ISettings settings)
         {
             _settings = settings;
             if (!_settings.PreventDowngrades)
@@ -436,12 +435,11 @@ namespace MMRando
             }
             _settings.Seed = seed;
 
-            Random = new Random(BitConverter.ToInt32(_settings.GetGenerationSettingsHash(), 8));
+            Random = new Random(BitConverter.ToInt32(SettingsUtils.GetGenerationSettingsHash(_settings), 8));
         }
 
         private string[] ReadRulesetFromResources()
         {
-            string[] lines = null;
             var mode = _settings.LogicMode;
 
             if (_settings.LogicMode == LogicMode.User)

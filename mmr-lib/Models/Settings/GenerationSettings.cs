@@ -10,7 +10,6 @@ namespace MMRando.Models
     /// </summary>
     public class GenerationSettings : INotifyPropertyChanged
     {
-
         /// <summary>
         /// The randomizer seed
         /// </summary>

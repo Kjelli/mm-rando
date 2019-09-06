@@ -2,6 +2,7 @@
 
 namespace MMRando.Models
 {
+    [Description("Damage Mode")]
     public enum DamageMode
     {
         Default,

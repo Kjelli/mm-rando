@@ -1,14 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace MMRando.Models
 {
-    public class Settings : GenerationSettings
+    public class Settings : GenerationSettings, ISettings
     {
         #region General settings
 
@@ -200,7 +196,7 @@ namespace MMRando.Models
         /// Updates chest appearance to match contents
         /// </summary>
         public bool UpdateChests
-        { 
+        {
             get => updateChests;
             set => SetField(ref updateChests, value);
         }
@@ -319,54 +315,5 @@ namespace MMRando.Models
 
         #endregion
 
-
-        public string GetGenerationSettings()
-        {
-            string settings = JsonConvert.SerializeObject(this);
-            var settingsObj = JsonConvert.DeserializeObject<GenerationSettings>
-                (settings);
-            return JsonConvert.SerializeObject(settingsObj);
-        }
-
-        public byte[] GetGenerationSettingsHash()
-        {
-            string field = GetGenerationSettings();
-            if (!OutputSpoiler)
-            {
-                field += "bad salt by mzxrules";
-            }
-
-            byte[] hash;
-            using (var sha256 = SHA256.Create())
-            {
-                hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(field));
-            }
-            return hash;
-        }
-
-        public override string ToString()
-        {
-            var hash = GetGenerationSettingsHash();
-            return string.Concat(hash.Select(x => x.ToString("X2")));
-        }
-
-        public static Settings LoadFromFile(string filename)
-        {
-            if (!File.Exists(filename))
-            {
-                return new Settings();
-            }
-
-            var json = File.ReadAllText(filename);
-            var jsonSettings = new JsonSerializerSettings
-            {
-                Error = delegate (object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
-                {
-                    System.Diagnostics.Debug.WriteLine(args.ErrorContext.Error.Message);
-                    args.ErrorContext.Handled = true;
-                },
-            };
-            return JsonConvert.DeserializeObject<Settings>(json, jsonSettings);
-        }
     }
 }

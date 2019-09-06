@@ -3,6 +3,7 @@
         xmlns:vm="clr-namespace:NotWinForm.ViewModels;assembly=NotWinForm"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:NotWinForm.Views.Partials;assembly=NotWinForm"
         x:Class="NotWinForm.Views.MainWindowView"
         Icon="/Assets/avalonia-logo.ico"
         SizeToContent="WidthAndHeight"
@@ -39,15 +40,8 @@
                     Spacing="8"
                     Margin="20"
                     HorizontalAlignment="Center">
-          <TextBlock HorizontalAlignment="Center">ROM must be Majora's Mask (U) ending with ".z64"</TextBlock>
-
-          <StackPanel Orientation="Horizontal"
-                      HorizontalAlignment="Center">
-            <Button Background="#33119EDA"
-                    BorderBrush="#33119EDA">Open ROM</Button>
-
-            <TextBox Width="200">D:\N64\AAA_BASEROM.z64</TextBox>
-          </StackPanel>
+          
+          <ui:FileSelectSettingsView ButtonText="KOM AN DÅ" DescriptionText="This is bar" InitialFilePath="C:/Foo"/>
 
           <StackPanel Orientation="Horizontal"
                       Spacing="8">
@@ -94,25 +88,10 @@
           <StackPanel Orientation="Horizontal"
                       Spacing="8"
                       HorizontalAlignment="Center">
-            <TextBlock VerticalAlignment="Center">Mode/Logic</TextBlock>
 
-            <DropDown SelectedIndex="0"
-                      Width="200"
-                      Height="30">
-              <DropDownItem Content="Casual Logic" />
+            <!--Logic Mode-->
+            <ui:ComboSettingsView DataContext="{Binding LogicMode}"/>
 
-              <DropDownItem Content="Glitched Logic" />
-
-              <DropDownItem Content="Glitched No Setups" />
-
-              <DropDownItem Content="Glitched Common Tricks" />
-
-              <DropDownItem Content="Custom Logic" />
-
-              <DropDownItem Content="No Logic" />
-
-              <DropDownItem Content="Vanilla Item Placement" />
-            </DropDown>
           </StackPanel>
 
 
@@ -212,117 +191,17 @@
             <StackPanel Margin="8">
               <TextBlock FontSize="14"
                          Margin="0 0 0 10">Modifiers</TextBlock>
-              <Grid HorizontalAlignment="Center"
-                    ColumnDefinitions="1*,1*"
-                    RowDefinitions="40,40,40,40,40">
-                <TextBlock Grid.Row="0"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Damage mode</TextBlock>
 
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="0"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
+              <ui:ComboSettingsView DataContext="{Binding DamageMode}"/>
 
-                  <DropDownItem Content="2x"/>
+              <ui:ComboSettingsView DataContext="{Binding DamageEffect}"/>
 
-                  <DropDownItem Content="4x"/>
+              <ui:ComboSettingsView DataContext="{Binding MovementMode}"/>
 
-                  <DropDownItem Content="One hit knockout"/>
+              <ui:ComboSettingsView DataContext="{Binding FloorType}"/>
+              
+              <ui:ComboSettingsView DataContext="{Binding ClockSpeed}"/>
 
-                  <DropDownItem Content="Doom"/>
-
-                </DropDown>
-
-                <TextBlock Grid.Row="1"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Damage effect</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="1"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="Fire"/>
-
-                  <DropDownItem Content="Ice"/>
-
-                  <DropDownItem Content="Shock"/>
-
-                  <DropDownItem Content="Knockdown"/>
-
-                  <DropDownItem Content="Random"/>
-
-                </DropDown>
-
-                <TextBlock Grid.Row="2"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Movement</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="2"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="High speed (many softlocks!)"/>
-
-                  <DropDownItem Content="Super low gravity"/>
-
-                  <DropDownItem Content="Low gravity"/>
-
-                  <DropDownItem Content="High gravity"/>
-
-                </DropDown>
-
-                <TextBlock Grid.Row="3"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Floor types</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="3"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="Sand"/>
-
-                  <DropDownItem Content="Ice"/>
-
-                  <DropDownItem Content="Snow"/>
-
-                  <DropDownItem Content="Random"/>
-
-                </DropDown>
-
-                <TextBlock Grid.Row="4"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Clock speed</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="4"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="1/3x"/>
-
-                  <DropDownItem Content="2/3x"/>
-
-                  <DropDownItem Content="2x"/>
-
-                  <DropDownItem Content="3x"/>
-
-                  <DropDownItem Content="6x"/>
-                </DropDown>
-              </Grid>
             </StackPanel>
           </Border>
 
@@ -401,77 +280,13 @@
               <TextBlock FontSize="14"
                          Margin="0 0 0 10">Cosmetics</TextBlock>
 
-              <Grid ColumnDefinitions="1*,2*"
-                    RowDefinitions="40,40,40,40">
-                <TextBlock Grid.Row="0"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Tunic color</TextBlock>
+                <ui:ColorPickerSettingsView DataContext="{Binding TunicColor}"/>
 
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Width="200"
-                        Height="30"
-                        Background="Green"/>
+                <ui:ComboSettingsView DataContext="{Binding PlayerModel}" />
 
-                <TextBlock Grid.Row="1"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Player model</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="1"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="Child Link (OoT)"/>
-
-                  <DropDownItem Content="Adult Link"/>
-
-                  <DropDownItem Content="Kafei"/>
-                </DropDown>
-
-                <TextBlock Grid.Row="2"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Tatl color</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="2"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="Dark"/>
-
-                  <DropDownItem Content="Hot"/>
-
-                  <DropDownItem Content="Cool"/>
-
-                  <DropDownItem Content="Rainbow"/>
-
-                  <DropDownItem Content="Random"/>
-                </DropDown>
-
-                <TextBlock Grid.Row="3"
-                           Grid.Column="0"
-                           VerticalAlignment="Center">Gossip Hints</TextBlock>
-
-                <DropDown SelectedIndex="0"
-                          Width="200"
-                          Height="30"
-                          Grid.Row="3"
-                          Grid.Column="1">
-                  <DropDownItem Content="Default"/>
-
-                  <DropDownItem Content="Random"/>
-
-                  <DropDownItem Content="Relevant"/>
-
-                  <DropDownItem Content="Competitive"/>
-
-                </DropDown>
-              </Grid>
+                <ui:ComboSettingsView DataContext="{Binding TatlColor}" />
+              
+                <ui:ComboSettingsView DataContext="{Binding GossipHints}" />
 
             </StackPanel>
           </Border>
@@ -497,7 +312,7 @@
             <TextBox HorizontalAlignment="Stretch"
                      Grid.Row="0"
                      Grid.Column="1"
-                     Height="30">D:\N64\AAA_BASEROM.z64</TextBox>
+                     Height="30">1337</TextBox>
 
             <Button Grid.Row="1"
                     Grid.ColumnSpan="2"
@@ -523,7 +338,7 @@
             <TextBox HorizontalAlignment="Stretch"
                      Grid.Row="0"
                      Grid.Column="1"
-                     Height="30">D:\N64\AAA_BASEROM.z64</TextBox>
+                     Height="30">D:\N64\Patchpath</TextBox>
 
             <Button Grid.Row="1"
                     Grid.ColumnSpan="2"
