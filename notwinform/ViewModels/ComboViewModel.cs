@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace NotWinForm.ViewModels
 {
-    public class ComboSettingsViewModel<T> : ViewModelBase where T : Enum
+    public class ComboViewModel<T> : ViewModelBase where T : Enum
     {
         private string _settingLabel;
         public string SettingLabel
@@ -16,16 +16,16 @@ namespace NotWinForm.ViewModels
             set => this.RaiseAndSetIfChanged(ref _settingLabel, value);
         }
 
-        public List<ComboSetting> Items { get; set; }
+        public List<ComboItem> Items { get; set; }
 
-        private ComboSetting _selected;
-        public ComboSetting Selected
+        private ComboItem _selected;
+        public ComboItem Selected
         {
             get => _selected;
             set => this.RaiseAndSetIfChanged(ref _selected, value);
         }
 
-        public ComboSettingsViewModel(string settingLabel = default, T defaultSelection = default)
+        public ComboViewModel(string settingLabel = default, T defaultSelection = default)
         {
             SetLabelOrDefault(settingLabel);
             PopulateItems();
@@ -71,14 +71,14 @@ namespace NotWinForm.ViewModels
             }
 
 
-            Items = items.Select(kvp => new ComboSetting(kvp.Key, kvp.Value)).ToList();
+            Items = items.Select(kvp => new ComboItem(kvp.Key, kvp.Value)).ToList();
         }
 
-        public class ComboSetting
+        public class ComboItem
         {
             public string Label { get; set; }
             public T Value { get; set; }
-            public ComboSetting(string label, T value)
+            public ComboItem(string label, T value)
             {
                 Label = label;
                 Value = value;

@@ -1,0 +1,75 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+             x:Class="NotWinForm.Views.Partials.MiscellaneousView">
+  <StackPanel Margin="20"
+                  Spacing="8"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Stretch">
+    <Border BorderBrush="#33119EDA"
+            BorderThickness="1">
+      <StackPanel Margin="8"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Center">
+
+        <TextBlock FontSize="14"
+                   Margin="0 0 0 10">Comforts</TextBlock>
+
+        <Grid ColumnDefinitions="175,175"
+              RowDefinitions="20,20,20,20,20">
+          <CheckBox Grid.Column="0"
+                    Grid.Row="0">Shorten cutscenes</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="1">Quick text</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="2">Randomize music</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="3">No music</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="4">Fix Epona sword</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="0">Free hints</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="1">Clear hints</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="2">Update shops</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="3">Update chests</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="4">No downgrades</CheckBox>
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <Border BorderBrush="#33119EDA"
+            BorderThickness="1">
+      <StackPanel Margin="8"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Stretch">
+        <TextBlock FontSize="14"
+                   Margin="0 0 0 10">Cosmetics</TextBlock>
+
+        <control:ColorPickerView DataContext="{Binding TunicColor}"/>
+
+        <control:ComboView DataContext="{Binding PlayerModel}" />
+
+        <control:ComboView DataContext="{Binding TatlColor}" />
+
+        <control:ComboView DataContext="{Binding GossipHints}" />
+
+      </StackPanel>
+    </Border>
+  </StackPanel>
+</UserControl>

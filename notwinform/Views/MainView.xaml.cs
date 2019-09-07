@@ -2,17 +2,21 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace NotWinForm.Views.Partials
+namespace NotWinForm.Views
 {
-    public class ColorPickerSettingsView : UserControl
+    public class MainView : Window
     {
-        public ColorPickerSettingsView()
+        public MainView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+#if DEBUG
+            this.AttachDevTools();
+#endif
         }
 
         private void InitializeComponent()
         {
+            new CheckBox();
             AvaloniaXamlLoader.Load(this);
         }
     }

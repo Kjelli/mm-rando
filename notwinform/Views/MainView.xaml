@@ -1,0 +1,75 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NotWinForm.ViewModels;assembly=NotWinForm"
+        xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+        xmlns:section="clr-namespace:NotWinForm.Views.Partials;assembly=NotWinForm"
+        x:Class="NotWinForm.Views.MainView"
+        Icon="/Assets/avalonia-logo.ico"
+        SizeToContent="WidthAndHeight"
+        Title="Majora's Mask Randomizer (Beta UI)">
+
+  <Design.DataContext>
+    <vm:MainViewModel/>
+  </Design.DataContext>
+
+  <StackPanel Orientation="Vertical"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Stretch">
+
+    <DockPanel>
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_File">
+          <MenuItem Header="Exit"/>
+        </MenuItem>
+        <MenuItem Header="_Customize">
+          <MenuItem Header="Edit logic..."/>
+        </MenuItem>
+        <MenuItem Header="_Help">
+          <MenuItem Header="Manual"/>
+          <MenuItem Header="About"/>
+        </MenuItem>
+      </Menu>
+    </DockPanel>
+
+    <TabControl>
+      <TabItem Header="Rom Settings">
+        <section:RomSettingsView/>
+      </TabItem>
+
+      <TabItem Header="Main Settings">
+        <section:MainSettingsView/>
+      </TabItem>
+
+      <TabItem Header="Gimmicks">
+        <section:GimmicksView/>
+      </TabItem>
+
+      <TabItem Header="Miscellaneous">
+        <section:MiscellaneousView/>
+      </TabItem>
+
+    </TabControl>
+
+    <Separator BorderThickness="1" BorderBrush="#33119EDA"/>
+
+    <TabControl>
+      <TabItem Header="Output settings">
+        <section:OutputSettingsView/>
+      </TabItem>
+      <TabItem Header="Patch settings">
+        <section:PatchSettingsView/>
+      </TabItem>
+    </TabControl>
+
+    <StackPanel Margin="8">
+      <TextBlock>Ready...</TextBlock>
+
+      <ProgressBar Value="10"
+                   Foreground="#99119EDA"
+                   Background="#33119EDA"></ProgressBar>
+    </StackPanel>
+  </StackPanel>
+
+</Window>

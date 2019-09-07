@@ -3,7 +3,7 @@ using ReactiveUI;
 
 namespace NotWinForm.ViewModels
 {
-    public class ColorPickerSettingsViewModel : ViewModelBase
+    public class ColorPickerViewModel : ViewModelBase
     {
         private string _settingLabel;
         public string SettingLabel
@@ -18,7 +18,7 @@ namespace NotWinForm.ViewModels
             set => this.RaiseAndSetIfChanged(ref _selectedColor, value);
         }
 
-        public ColorPickerSettingsViewModel(string label, Color initialColor)
+        public ColorPickerViewModel(string label, Color initialColor)
         {
             SettingLabel = label;
             SelectedColor = initialColor;

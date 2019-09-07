@@ -1,0 +1,25 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="NotWinForm.Views.Controls.FileSelectView"
+             mc:Ignorable="d"
+             d:DesignWidth="400" 
+             d:DesignHeight="150">
+  <StackPanel VerticalAlignment="Center">
+    <StackPanel Orientation="Horizontal" 
+                HorizontalAlignment="{Binding $parent[1].HorizontalAlignment}">
+      <Button IsEnabled="True"
+              Command="{Binding $parent[2].OpenBrowserCommand}"
+              Content="{Binding $parent[2].ButtonText}"/>
+
+      <TextBox IsReadOnly="True"
+               Width="200"
+               Text="{Binding $parent[2].SelectedFilePath}"
+               TextWrapping="NoWrap"/>
+
+    </StackPanel>
+
+    <TextBlock HorizontalAlignment="{Binding $parent[1].HorizontalAlignment}" Text="{Binding $parent[1].DescriptionText}" />
+  </StackPanel>
+</UserControl>

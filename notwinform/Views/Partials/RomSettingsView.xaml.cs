@@ -1,11 +1,12 @@
-﻿using Avalonia.Controls;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace NotWinForm.Views.Partials
 {
-    public class ComboSettingsView : UserControl
+    public class RomSettingsView : UserControl
     {
-        public ComboSettingsView()
+        public RomSettingsView()
         {
             this.InitializeComponent();
         }

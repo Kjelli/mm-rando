@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+             mc:Ignorable="d" 
+             d:DesignWidth="400" 
+             d:DesignHeight="125"
+             x:Class="NotWinForm.Views.Partials.PatchSettingsView">
+  <StackPanel Spacing="8"
+                  Margin="20">
+    <control:FileSelectView HorizontalAlignment="Left"
+                       ButtonText="Load patch..."
+                       DescriptionText=""
+                       SelectedFilePath="C:/Path/to/patch"/>
+
+    <Button Grid.Row="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Stretch"
+            Height="40"
+            Background="#99119EDA"
+            FontSize="18">Apply Patch</Button>
+  </StackPanel>
+</UserControl>

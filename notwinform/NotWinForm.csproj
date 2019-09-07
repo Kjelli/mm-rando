@@ -14,9 +14,26 @@
     <AvaloniaResource Include="Assets\*" />
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Remove="Views\Partials\GimmicksView.xaml" />
+    <AvaloniaResource Remove="Views\Partials\MainSettingsView.xaml" />
+    <AvaloniaResource Remove="Views\Partials\MiscellaneousView.xaml" />
+    <AvaloniaResource Remove="Views\Partials\OutputSettingsView.xaml" />
+    <AvaloniaResource Remove="Views\Partials\PatchSettingsView.xaml" />
+    <AvaloniaResource Remove="Views\Partials\RomSettingsView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Partials\GimmicksView.xaml" />
+    <None Remove="Views\Partials\MainSettingsView.xaml" />
+    <None Remove="Views\Partials\MiscellaneousView.xaml" />
+    <None Remove="Views\Partials\OutputSettingsView.xaml" />
+    <None Remove="Views\Partials\PatchSettingsView.xaml" />
+    <None Remove="Views\Partials\RomSettingsView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.8.2" />
     <PackageReference Include="Avalonia.Desktop" Version="0.8.2" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.2" />
+    <PackageReference Include="MessageBox.Avalonia" Version="0.8.3" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MMR Lib">
@@ -24,17 +41,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    <Compile Update="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Partials\ColorPickerSettingsView.xaml.cs">
-      <DependentUpon>ColorPickerSettingsView.xaml</DependentUpon>
+    <Compile Update="Views\Controls\ColorPickerView.xaml.cs">
+      <DependentUpon>ColorPickerView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Partials\ComboSettingsView.xaml.cs">
-      <DependentUpon>ComboSettingsView.xaml</DependentUpon>
+    <Compile Update="Views\Controls\ComboView.xaml.cs">
+      <DependentUpon>ComboView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Partials\FileSelectSettingsView.xaml.cs">
-      <DependentUpon>FileSelectSettingsView.xaml</DependentUpon>
+    <Compile Update="Views\Controls\FileSelectView.xaml.cs">
+      <DependentUpon>FileSelectView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Partials\OutputSettingsView.xaml.cs">
+      <DependentUpon>OutputSettingsView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\RomSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\MainSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\GimmicksView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\MiscellaneousView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\OutputSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Partials\PatchSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

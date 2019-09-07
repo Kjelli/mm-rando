@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:NotWinForm.ViewModels;assembly=NotWinForm"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="40"
-             x:Class="NotWinForm.Views.Partials.ComboSettingsView"
-             d:DataContext="{x:Static dd:ViewModels.ExampleCombo}">
+             x:Class="NotWinForm.Views.Controls.ColorPickerView"
+             d:DataContext="{x:Static dd:ViewModels.ExampleColorPicker}">
   <Grid HorizontalAlignment="Stretch"
         ColumnDefinitions="150,200"
         RowDefinitions="40">
@@ -15,20 +15,10 @@
                HorizontalAlignment="Left"
                Grid.Column="0"
                Grid.Row="0"/>
-
-    <ComboBox Items="{Binding Items}"
-              SelectedItem="{Binding Selected}"
-              HorizontalAlignment="Right"
-              Width="200"
-              Height="30"
-              Grid.Column="1"
-              Grid.Row="0">
-      <ComboBox.ItemTemplate>
-        <DataTemplate>
-          <ComboBoxItem Content="{Binding Label}"
-                        IsHitTestVisible="False"/>
-        </DataTemplate>
-      </ComboBox.ItemTemplate>
-    </ComboBox>
+    <Button Grid.Row="0"
+            Grid.Column="1"
+            Width="200"
+            Height="30"
+            Background="{Binding SelectedColor}"/>
   </Grid>
 </UserControl>

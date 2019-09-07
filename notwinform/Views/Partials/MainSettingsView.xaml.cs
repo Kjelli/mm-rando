@@ -2,16 +2,13 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace NotWinForm.Views
+namespace NotWinForm.Views.Partials
 {
-    public class MainWindowView : Window
+    public class MainSettingsView : UserControl
     {
-        public MainWindowView()
+        public MainSettingsView()
         {
-            InitializeComponent();
-#if DEBUG
-            this.AttachDevTools();
-#endif
+            this.InitializeComponent();
         }
 
         private void InitializeComponent()

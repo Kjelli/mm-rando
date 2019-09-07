@@ -13,7 +13,7 @@ namespace NotWinForm
         // Initialization code. Don't use any Avalonia, third-party APIs or any
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
-        public static void Main(string[] args) => BuildAvaloniaApp().Start<MainWindowView>(() => new MainWindowViewModel());
+        public static void Main(string[] args) => BuildAvaloniaApp().Start<MainView>(() => new MainViewModel());
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
@@ -22,9 +22,9 @@ namespace NotWinForm
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetExecutingAssembly());
 
             return AppBuilder.Configure<App>()
+                           .UseReactiveUI()
                            .UsePlatformDetect()
-                           .LogToDebug()
-                           .UseReactiveUI();
+                           .LogToDebug();
         }
     }
 }

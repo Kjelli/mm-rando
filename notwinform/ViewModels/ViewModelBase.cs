@@ -13,12 +13,11 @@ namespace NotWinForm.ViewModels
             this.WhenActivated((CompositeDisposable disposables) =>
             {
                 /* handle activation */
-                System.Console.WriteLine("ACTIVATE: This never logs man");
                 Disposable
                     .Create(() => { /* handle deactivation */ })
                     .DisposeWith(disposables);
             });
-
         }
+
     }
 }

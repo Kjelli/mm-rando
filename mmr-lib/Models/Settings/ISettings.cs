@@ -27,7 +27,7 @@ namespace MMRando.Models
         /// <summary>
         /// Add songs to the randomization pool
         /// </summary>
-        [Description("Shuffle songs")]
+        [Description("Shuffle songs with items")]
         bool AddSongs { get; }
 
         /// <summary>

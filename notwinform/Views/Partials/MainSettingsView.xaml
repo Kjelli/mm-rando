@@ -1,0 +1,88 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+             mc:Ignorable="d" 
+             d:DesignWidth="400" 
+             d:DesignHeight="375"
+             x:Class="NotWinForm.Views.Partials.MainSettingsView">
+  <StackPanel Orientation="Vertical"
+                  HorizontalAlignment="Stretch"
+                  Spacing="8"
+                  Margin="20">
+    <!--Logic Mode-->
+    <control:ComboView DataContext="{Binding LogicMode}"
+                  HorizontalAlignment="Center"/>
+
+    <!--ITEM POOL OPTIONS-->
+    <Border BorderBrush="#33119EDA"
+            BorderThickness="1">
+      <StackPanel Margin="8">
+        <TextBlock FontSize="14"
+                   Margin="0 0 0 10">Item Pool Options</TextBlock>
+
+        <Grid ColumnDefinitions="175,175"
+              RowDefinitions="20,20,20,20,20,20">
+          <CheckBox IsChecked="{Binding Settings.ExcludeSongOfSoaring}"
+                    Grid.Column="0"
+                    Grid.Row="0">Exclude Song of Soaring</CheckBox>
+
+          <CheckBox IsChecked="{Binding Settings.AddDungeonItems}" 
+                    Grid.Column="0"
+                    Grid.Row="1">Dungeon Items</CheckBox>
+
+          <CheckBox IsChecked="{Binding Settings.AddShopItems}"
+                    Grid.Column="0"
+                    Grid.Row="2">Shop Items</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="3">Caught bottle contents</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="0">Moon items</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="1">Great Fairy rewards</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="2">Everything else</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="3">Pre-Clocktown Deku Nut</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="4">Crazy Starting Items</CheckBox>
+        </Grid>
+
+        <CheckBox Name="Foo">Use custom item list</CheckBox>
+
+      </StackPanel>
+    </Border>
+    <!--END ITEM POOL OPTIONS-->
+
+    <!--OTHER CUSTOMIZATIONS-->
+    <Border BorderBrush="#33119EDA"
+            BorderThickness="1">
+      <StackPanel Margin="8">
+        <TextBlock FontSize="14"
+                   Margin="0 0 0 10">Other Customizations</TextBlock>
+        <Grid ColumnDefinitions="1*,1*"
+              RowDefinitions="20,20">
+          <CheckBox Grid.Column="0"
+                    Grid.Row="0">Dungeon Entrances</CheckBox>
+
+          <CheckBox Grid.Column="0"
+                    Grid.Row="1">Mix songs with items</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="0">No starting items</CheckBox>
+
+          <CheckBox Grid.Column="1"
+                    Grid.Row="1">Enemies (Beta)</CheckBox>
+        </Grid>
+      </StackPanel>
+    </Border>
+    <!--END OTHER CUSTOMIZATIONS-->
+  </StackPanel>
+</UserControl>
