@@ -14,16 +14,18 @@
                  Grid.Column="0"
                  VerticalAlignment="Center">Seed</TextBlock>
 
-      <TextBox HorizontalAlignment="Stretch"
+      <TextBox Text="{Binding Settings.Seed, Mode=TwoWay}"
+               HorizontalAlignment="Stretch"
                Grid.Row="0"
                Grid.Column="1"
-               Height="30">1337</TextBox>
+               Height="30"/>
 
       <Button Grid.Row="1"
               Grid.ColumnSpan="2"
               HorizontalAlignment="Stretch"
               Height="40"
               Background="#99119EDA"
+              Command="{Binding RandomizeCommand}"
               FontSize="18">Randomize</Button>
     </Grid>
   </StackPanel>

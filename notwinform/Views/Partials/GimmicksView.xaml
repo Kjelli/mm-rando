@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mmr="clr-namespace:MMRando.Models;assembly=MMR Lib"
              xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
              mc:Ignorable="d" 
              d:DesignWidth="400" 
@@ -32,15 +33,15 @@
         <TextBlock FontSize="14"
                    Margin="0 0 0 10">Modifiers</TextBlock>
 
-        <control:ComboView DataContext="{Binding DamageMode}"/>
+        <control:EnumComboView EnumType="{x:Type mmr:DamageMode}"/>
 
-        <control:ComboView DataContext="{Binding DamageEffect}"/>
+        <control:EnumComboView EnumType="{x:Type mmr:DamageEffect}"/>
 
-        <control:ComboView DataContext="{Binding MovementMode}"/>
+        <control:EnumComboView EnumType="{x:Type mmr:MovementMode}"/>
 
-        <control:ComboView DataContext="{Binding FloorType}"/>
+        <control:EnumComboView EnumType="{x:Type mmr:FloorType}"/>
 
-        <control:ComboView DataContext="{Binding ClockSpeed}"/>
+        <control:EnumComboView EnumType="{x:Type mmr:ClockSpeed}"/>
 
       </StackPanel>
     </Border>

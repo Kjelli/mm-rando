@@ -3,7 +3,7 @@ using ReactiveUI;
 
 namespace NotWinForm.Models
 {
-    public partial class RandomizerSettings : ReactiveObject, ISettings
+    public partial class SettingsViewModel : ReactiveObject, ISettings
     {
         private DamageMode _damageMode;
         public DamageMode DamageMode

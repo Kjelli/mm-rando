@@ -14,6 +14,7 @@
     <AvaloniaResource Include="Assets\*" />
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Remove="Views\Controls\EnumComboView.xaml" />
     <AvaloniaResource Remove="Views\Partials\GimmicksView.xaml" />
     <AvaloniaResource Remove="Views\Partials\MainSettingsView.xaml" />
     <AvaloniaResource Remove="Views\Partials\MiscellaneousView.xaml" />
@@ -22,6 +23,7 @@
     <AvaloniaResource Remove="Views\Partials\RomSettingsView.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Views\Controls\EnumComboView.xaml" />
     <None Remove="Views\Partials\GimmicksView.xaml" />
     <None Remove="Views\Partials\MainSettingsView.xaml" />
     <None Remove="Views\Partials\MiscellaneousView.xaml" />
@@ -34,6 +36,7 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.8.2" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.2" />
     <PackageReference Include="MessageBox.Avalonia" Version="0.8.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MMR Lib">
@@ -46,9 +49,6 @@
     </Compile>
     <Compile Update="Views\Controls\ColorPickerView.xaml.cs">
       <DependentUpon>ColorPickerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Controls\ComboView.xaml.cs">
-      <DependentUpon>ComboView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Controls\FileSelectView.xaml.cs">
       <DependentUpon>FileSelectView.xaml</DependentUpon>
@@ -84,6 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Partials\PatchSettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Controls\EnumComboView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

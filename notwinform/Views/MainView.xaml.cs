@@ -1,10 +1,10 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using NotWinForm.ViewModels;
 
 namespace NotWinForm.Views
 {
-    public class MainView : Window
+    public class MainView : ReactiveWindow<MainViewModel>
     {
         public MainView()
         {
@@ -16,7 +16,6 @@ namespace NotWinForm.Views
 
         private void InitializeComponent()
         {
-            new CheckBox();
             AvaloniaXamlLoader.Load(this);
         }
     }

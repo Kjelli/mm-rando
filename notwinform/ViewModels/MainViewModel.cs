@@ -1,9 +1,12 @@
 ﻿using Avalonia;
 using Avalonia.Media;
-using MMRando.Models;
+using MMRando;
 using NotWinForm.Models;
-using NotWinForm.Utils;
+using NotWinForm.Services;
 using ReactiveUI;
+using Splat;
+using System;
+using System.ComponentModel;
 using System.Reactive;
 using System.Threading.Tasks;
 
@@ -11,65 +14,65 @@ namespace NotWinForm.ViewModels
 {
     public partial class MainViewModel : ViewModelBase
     {
-        #region Setting Values
-
-        // Main Settings
-        public ComboViewModel<LogicMode> LogicMode { get; set; }
-
-        // Gimmicks
-        public ComboViewModel<DamageMode> DamageMode { get; set; }
-        public ComboViewModel<DamageEffect> DamageEffect { get; set; }
-        public ComboViewModel<MovementMode> MovementMode { get; set; }
-        public ComboViewModel<FloorType> FloorType { get; set; }
-        public ComboViewModel<ClockSpeed> ClockSpeed { get; set; }
-
-        // Miscellaneous
         public ColorPickerViewModel TunicColor { get; set; }
-        public ComboViewModel<Character> PlayerModel { get; set; }
-        public ComboViewModel<TatlColorSchema> TatlColor { get; set; }
-        public ComboViewModel<GossipHintStyle> GossipHints { get; set; }
-
-        #endregion
 
         #region Commands
         public ReactiveCommand<string, Unit> RomSelectedCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> RandomizeCommand { get; private set; }
         #endregion
 
-        public RandomizerSettings Settings { get; set; }
+        public SettingsViewModel Settings { get; set; }
+        public DialogMessageService Messages { get; set; }
 
         public MainViewModel()
         {
             InitializeView();
             InitializeCommands();
 
-            Settings = new RandomizerSettings();
+            Settings = Locator.Current.GetService<SettingsViewModel>();
+            Messages = Locator.Current.GetService<DialogMessageService>();
         }
 
 
         private void InitializeView()
         {
-            LogicMode = new ComboViewModel<LogicMode>();
-
-            DamageMode = new ComboViewModel<DamageMode>();
-            DamageEffect = new ComboViewModel<DamageEffect>();
-            MovementMode = new ComboViewModel<MovementMode>();
-            FloorType = new ComboViewModel<FloorType>();
-            ClockSpeed = new ComboViewModel<ClockSpeed>();
-
             TunicColor = new ColorPickerViewModel("Tunic Color", Color.FromRgb(0x1E, 0x69, 0x1B));
-            PlayerModel = new ComboViewModel<Character>();
-            TatlColor = new ComboViewModel<TatlColorSchema>();
-            GossipHints = new ComboViewModel<GossipHintStyle>();
         }
 
         private void InitializeCommands()
         {
             RomSelectedCommand = ReactiveCommand.CreateFromTask<string, Unit>(RomSelected);
+            RandomizeCommand = ReactiveCommand.CreateFromTask<Unit, Unit>(Randomize);
+        }
+
+        private Task<Unit> Randomize(Unit _)
+        {
+            try
+            {
+                Randomizer r = new Randomizer(Settings);
+
+                var foo = new BackgroundWorker();
+                foo.WorkerReportsProgress = true;
+                var nice = r.Randomize(foo);
+
+                Messages.SuccessOk("Randomization complete!", "Success", "Success")
+                    .ShowDialog(Application.Current.MainWindow);
+            }
+            catch (Exception e)
+            {
+                Messages
+                    .ErrorOk(e.Message, "Critical: Could not randomize", "Critical Error")
+                    .ShowDialog(Application.Current.MainWindow);
+                Messages
+                    .ErrorOk(e.StackTrace, "Critical: Could not randomize", "Critical Error")
+                    .ShowDialog(Application.Current.MainWindow);
+            }
+            return Task.FromResult(Unit.Default);
         }
 
         private Task<Unit> RomSelected(string foo)
         {
-            var message = DialogBuilder.SuccessOk("TEST");
+            var message = Messages.SuccessOk("TEST");
 
             message.ShowDialog(Application.Current.MainWindow);
 

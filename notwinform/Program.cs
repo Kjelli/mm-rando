@@ -1,5 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Logging.Serilog;
+using NotWinForm.Models;
+using NotWinForm.Services;
 using NotWinForm.ViewModels;
 using NotWinForm.Views;
 using ReactiveUI;
@@ -20,6 +22,9 @@ namespace NotWinForm
         {
             Locator.CurrentMutable.RegisterLazySingleton(() => new ConventionalViewLocator(), typeof(IViewLocator));
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetExecutingAssembly());
+
+            Locator.CurrentMutable.RegisterConstant(new SettingsViewModel(), typeof(SettingsViewModel));
+            Locator.CurrentMutable.RegisterConstant(new DialogMessageService(), typeof(DialogMessageService));
 
             return AppBuilder.Configure<App>()
                            .UseReactiveUI()

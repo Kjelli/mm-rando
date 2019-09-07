@@ -1,0 +1,38 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:NotWinForm.ViewModels;assembly=NotWinForm"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="50"
+             x:Class="NotWinForm.Views.Controls.EnumComboView">
+  <UserControl.DataContext>
+    <vm:EnumComboViewModel/>
+  </UserControl.DataContext>
+  <StackPanel>
+    <Grid HorizontalAlignment="Stretch"
+        ColumnDefinitions="150,200"
+        RowDefinitions="40">
+
+      <TextBlock Text="{Binding Label, Mode=TwoWay}"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Left"
+                 Grid.Column="0"
+                 Grid.Row="0"/>
+
+      <ComboBox Items="{Binding Items, Mode=TwoWay}"
+                SelectedItem="{Binding Selected, Mode=TwoWay}"
+                HorizontalAlignment="Right"
+                Width="200"
+                Height="30"
+                Grid.Column="1"
+                Grid.Row="0">
+        <ComboBox.ItemTemplate>
+          <DataTemplate>
+            <ComboBoxItem Content="{Binding Label}"
+                          IsHitTestVisible="False"/>
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+    </Grid>
+  </StackPanel>
+</UserControl>

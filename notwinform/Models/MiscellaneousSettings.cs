@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace NotWinForm.Models
 {
-    public partial class RandomizerSettings : ReactiveObject, ISettings
+    public partial class SettingsViewModel : ReactiveObject, ISettings
     {
         private bool _shortenCutscenes;
         public bool ShortenCutscenes

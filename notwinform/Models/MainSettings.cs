@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace NotWinForm.Models
 {
-    public partial class RandomizerSettings : ReactiveObject, ISettings
+    public partial class SettingsViewModel : ReactiveObject, ISettings
     {
         private string _seed;
         public string Seed

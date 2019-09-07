@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+             xmlns:mmr="clr-namespace:MMRando.Models;assembly=MMR Lib"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
              x:Class="NotWinForm.Views.Partials.MiscellaneousView">
   <StackPanel Margin="20"
@@ -63,11 +64,12 @@
 
         <control:ColorPickerView DataContext="{Binding TunicColor}"/>
 
-        <control:ComboView DataContext="{Binding PlayerModel}" />
+        <control:EnumComboView EnumType="{x:Type mmr:Character}"/>
 
-        <control:ComboView DataContext="{Binding TatlColor}" />
+        <control:EnumComboView EnumType="{x:Type mmr:TatlColorSchema}"/>
 
-        <control:ComboView DataContext="{Binding GossipHints}" />
+        <control:EnumComboView EnumType="{x:Type mmr:GossipHintStyle}"/>
+
 
       </StackPanel>
     </Border>

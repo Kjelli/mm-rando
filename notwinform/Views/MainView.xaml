@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mmr="clr-namespace:MMRando.Models;assembly=MMR Lib"
         xmlns:vm="clr-namespace:NotWinForm.ViewModels;assembly=NotWinForm"
         xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
         xmlns:section="clr-namespace:NotWinForm.Views.Partials;assembly=NotWinForm"
@@ -11,7 +12,7 @@
         Title="Majora's Mask Randomizer (Beta UI)">
 
   <Design.DataContext>
-    <vm:MainViewModel/>
+    <vm:MainViewModel Settings="{x:Null}"/>
   </Design.DataContext>
 
   <StackPanel Orientation="Vertical"

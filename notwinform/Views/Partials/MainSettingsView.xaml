@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:control="clr-namespace:NotWinForm.Views.Controls;assembly=NotWinForm"
+             xmlns:mmr="clr-namespace:MMRando.Models;assembly=MMR Lib"
              mc:Ignorable="d" 
              d:DesignWidth="400" 
              d:DesignHeight="375"
@@ -12,8 +13,7 @@
                   Spacing="8"
                   Margin="20">
     <!--Logic Mode-->
-    <control:ComboView DataContext="{Binding LogicMode}"
-                  HorizontalAlignment="Center"/>
+    <control:EnumComboView EnumType="mmr:LogicMode" HorizontalAlignment="Center"/>
 
     <!--ITEM POOL OPTIONS-->
     <Border BorderBrush="#33119EDA"

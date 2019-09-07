@@ -4,9 +4,9 @@ using MessageBox.Avalonia.Enums;
 using MessageBox.Avalonia.Models;
 using System.Collections.Generic;
 
-namespace NotWinForm.Utils
+namespace NotWinForm.Services
 {
-    public static class DialogBuilder
+    public class DialogMessageService
     {
         #region Button Definitions
         public static List<ButtonDefinition> Ok => new List<ButtonDefinition>
@@ -19,7 +19,7 @@ namespace NotWinForm.Utils
             };
         #endregion
 
-        public static MessageBoxWindow SuccessOk(string text = "", string header = "", string title = "", bool center = true)
+        public MessageBoxWindow SuccessOk(string text = "", string header = "", string title = "", bool center = true)
         {
             var message = MessageBoxWindow.CreateCustomWindow(new MessageBoxCustomParams
             {
@@ -36,7 +36,7 @@ namespace NotWinForm.Utils
             return message;
         }
 
-        public static MessageBoxWindow ErrorOk(string text = "", string header = "", string title = "", bool center = true)
+        public MessageBoxWindow ErrorOk(string text = "", string header = "", string title = "", bool center = true)
         {
             var message = MessageBoxWindow.CreateCustomWindow(new MessageBoxCustomParams
             {
